@@ -1,0 +1,251 @@
+/* Colours are Bibo's own tokens (lib/app/theme/tokens.dart in the app).
+   Light: ink on white, Bibo blue header. Dark: the app's near-black page and
+   dark navy header, with the lighter blue for links. */
+
+@font-face {
+  font-family: "Fredoka";
+  src: url("fonts/Fredoka-600.ttf") format("truetype");
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Nunito";
+  src: url("fonts/Nunito-400.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Nunito";
+  src: url("fonts/Nunito-700.ttf") format("truetype");
+  font-weight: 700;
+  font-display: swap;
+}
+
+:root {
+  --ink: #0f1b3d;
+  --ink-muted: #4a5578;
+  --page: #ffffff;
+  --surface: #eaf1fc;
+  --line: #c9d6ee;
+  --link: #2563cb;
+  --header: #2563cb;
+  --on-header: #ffffff;
+  --on-header-muted: #dce7fa;
+  --sun: #ffcc23;
+  --focus: #0f1b3d;
+  --focus-on-header: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #f2f2f2;
+    --ink-muted: #a0a0a0;
+    --page: #121212;
+    --surface: #1e1e1e;
+    --line: #3a3a3a;
+    --link: #8fb2ff;
+    --header: #1e3a8a;
+    --on-header: #ffffff;
+    --on-header-muted: #e3eaff;
+    --sun: #ffd566;
+    --focus: #f2f2f2;
+    --focus-on-header: #ffffff;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font-family: "Nunito", system-ui, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+
+a {
+  color: var(--link);
+  text-underline-offset: 0.18em;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+a,
+button {
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.top :focus-visible {
+  outline-color: var(--focus-on-header);
+}
+
+.wrap {
+  width: min(42rem, 100% - 2rem);
+  margin-inline: auto;
+}
+
+/* Header */
+
+.top {
+  background: var(--header);
+  color: var(--on-header);
+  padding: 1.25rem 0 2rem;
+}
+
+.top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.wordmark {
+  font-family: "Fredoka", "Nunito", sans-serif;
+  font-weight: 600;
+  font-size: 1.75rem;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  /* The one accent colour the app uses, kept to a single underline. */
+  text-decoration: underline;
+  text-decoration-color: var(--sun);
+  text-decoration-thickness: 4px;
+  text-underline-offset: 6px;
+}
+
+.lang {
+  display: inline-flex;
+  border: 2px solid var(--on-header);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.lang button {
+  min-width: 3.25rem;
+  min-height: 2.75rem;
+  padding: 0 1rem;
+  border: 0;
+  background: transparent;
+  color: var(--on-header);
+  font: 700 0.9375rem "Nunito", sans-serif;
+}
+
+.lang button:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.lang button[aria-pressed="true"] {
+  background: var(--on-header);
+  color: var(--header);
+}
+
+.top h1 {
+  margin: 2.25rem 0 0.35rem;
+  font-family: "Fredoka", "Nunito", sans-serif;
+  font-weight: 600;
+  font-size: clamp(2rem, 7vw, 2.75rem);
+  line-height: 1.1;
+}
+
+.updated {
+  margin: 0;
+  color: var(--on-header-muted);
+  font-size: 0.9375rem;
+}
+
+/* Body */
+
+main {
+  padding: 2.25rem 0 3rem;
+}
+
+.short {
+  margin: 0 0 2.5rem;
+  padding: 1.25rem 1.25rem 1.1rem;
+  background: var(--surface);
+  border-radius: 14px;
+}
+
+.short h2 {
+  margin-top: 0;
+}
+
+.short p:last-child {
+  margin-bottom: 0;
+}
+
+h2 {
+  margin: 2.5rem 0 0.5rem;
+  font-family: "Fredoka", "Nunito", sans-serif;
+  font-weight: 600;
+  font-size: 1.4rem;
+  line-height: 1.25;
+}
+
+h3 {
+  margin: 1.5rem 0 0.25rem;
+  font-size: 1.0625rem;
+  font-weight: 700;
+}
+
+p,
+ul {
+  margin: 0.6rem 0;
+}
+
+ul {
+  padding-left: 1.25rem;
+}
+
+li {
+  margin: 0.4rem 0;
+}
+
+footer {
+  border-top: 1px solid var(--line);
+  padding: 1.5rem 0 2.5rem;
+  color: var(--ink-muted);
+  font-size: 0.9375rem;
+}
+
+footer p {
+  margin: 0.25rem 0;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+@media (min-width: 40rem) {
+  .top {
+    padding-bottom: 2.5rem;
+  }
+}
+
+@media print {
+  .lang {
+    display: none;
+  }
+  .top {
+    background: none;
+    color: #000;
+  }
+  .updated {
+    color: #333;
+  }
+}
